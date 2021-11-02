@@ -128,6 +128,8 @@ BootcampSchema.pre('save', async function(next) {
         country: loc[0].countryCode
     };
 
+    // Do not insert address
+    this.address = undefined;
     next();
 });
 
