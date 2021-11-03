@@ -10,6 +10,13 @@ const {
     deleteBootcamp
 } = require('../controllers/bootcamps');
 
+// Include other resource router
+const coursesRouter = require('./courses');
+
+// Re-route (Mount) to other resource router
+router.use('/:bootcampId/courses', coursesRouter);
+
+// Routes
 router.get('/', getBootcamps);
 router.post('/', createBootcamp);
 router.get('/:id', getBootcamp);
