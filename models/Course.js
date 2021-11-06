@@ -51,7 +51,6 @@ CourseSchema.statics.getAverageCost = async function(bootcampId) {
             }
         }
     ]);
-    console.log(aggregation);
 
     // Save AverageCost field in Bootcamp
     try {

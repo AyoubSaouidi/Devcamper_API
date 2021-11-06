@@ -6,10 +6,11 @@ const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 // Middlewares
 const morgan = require('morgan');
+const fileupload = require('express-fileupload');
 const errorHandler = require('./middleware/error');
 
 // Load Environement Variable
-dotenv.config({ path: path.resolve(__dirname, 'config', 'config.env') });
+dotenv.config({ path: path.join(__dirname, 'config', 'config.env') });
 
 // Connect to MongoDB
 connectDB();
@@ -24,10 +25,13 @@ const app = express();
 // Body json Parser
 app.use(express.json());
 
-// Dev logger middlware
+// Dev logger & FileUpload middlware
 if (process.env.NODE_ENV === 'developement') {
     app.use(morgan('dev'));
 }
+app.use(fileupload());
+// Set static folder
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Mount Routers (- EndPoints -)
 app.use('/api/v1/bootcamps', bootcamps);

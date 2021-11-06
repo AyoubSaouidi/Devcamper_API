@@ -8,9 +8,19 @@ const {
     updateCourse,
     deleteCourse
 } = require('../controllers/courses');
+// Advanced Results for Pgination, Selecting, Filtering and Sorting ( Course )
+const Course = require('../models/Course');
+const advancedResults = require('../middleware/advancedResults');
 
 // Routes
-router.get('/', getCourses);
+router.get(
+    '/',
+    advancedResults(Course, {
+        path: 'bootcamp',
+        select: 'name description'
+    }),
+    getCourses
+);
 router.post('/', addCourse);
 router.get('/:id', getCourse);
 router.put('/:id', updateCourse);
