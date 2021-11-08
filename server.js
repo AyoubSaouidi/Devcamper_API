@@ -2,6 +2,7 @@
 const path = require('path');
 const colors = require('colors');
 const express = require('express');
+const cookieParser = require('cookie-parser');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 // Middlewares
@@ -25,6 +26,9 @@ const app = express();
 
 // Body json Parser
 app.use(express.json());
+
+// Cookie Parser
+app.use(cookieParser());
 
 // Dev logger & FileUpload middlware
 if (process.env.NODE_ENV === 'developement') {
