@@ -29,7 +29,6 @@ exports.protect = asyncHandler(async(req, res, next) => {
     try {
         // Verify token and decode it
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        console.log(decoded);
         // Find user with payload's ID
         req.user = await User.findById(decoded.id);
 
