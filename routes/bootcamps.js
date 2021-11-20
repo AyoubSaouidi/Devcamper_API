@@ -17,9 +17,11 @@ const advancedResults = require('../middleware/advancedResults');
 
 // Include other resource router
 const coursesRouter = require('./courses');
+const reviewsRouter = require('./reviews');
 
 // Re-route (Mount) to other resource router
 router.use('/:bootcampId/courses', coursesRouter);
+router.use('/:bootcampId/reviews', reviewsRouter);
 
 // Routes
 router.get('/', advancedResults(Bootcamp, 'courses'), getBootcamps);
