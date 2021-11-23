@@ -5,6 +5,7 @@ const {
     register,
     login,
     getMe,
+    logout,
     forgotPassword,
     resetPassword,
     updateDetails,
@@ -14,6 +15,7 @@ const { protect } = require('../middleware/auth');
 
 // Protected Routes
 router.get('/me', protect, getMe);
+router.get('/logout', protect, logout);
 router.put('/updatedetails', protect, updateDetails);
 router.put('/updatepassword', protect, updatePassword);
 // Routes

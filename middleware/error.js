@@ -10,7 +10,7 @@ const errorHandler = (err, req, res, next) => {
 
     // Check CastError (Mongoose bad ObjectId)
     if (err.name === 'CastError') {
-        const message = `Resource not found with id of ${err.value}`;
+        const message = `Resource not found`;
 
         // Error
         error = new ErrorResponse(message, 404);
@@ -18,9 +18,7 @@ const errorHandler = (err, req, res, next) => {
 
     // Check MongoServerError (Mongoose duplicate key)
     if (err.code === 11000) {
-        const message = `Resource already exists with same ${
-      Object.keys(err.keyValue)[0]
-    }`;
+        const message = 'Duplicate key in database';
 
         // Error
         error = new ErrorResponse(message, 400);
