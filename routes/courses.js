@@ -13,6 +13,10 @@ const {
 const Course = require('../models/Course');
 const advancedResults = require('../middleware/advancedResults');
 
+// Pretected Routes
+router.post('/', protect, authorize('publisher', 'admin'), addCourse);
+router.put('/:id', protect, authorize('publisher', 'admin'), updateCourse);
+router.delete('/:id', protect, authorize('publisher', 'admin'), deleteCourse);
 // Routes
 router.get(
     '/',
@@ -22,9 +26,6 @@ router.get(
     }),
     getCourses
 );
-router.post('/', protect, authorize('publisher', 'admin'), addCourse);
 router.get('/:id', getCourse);
-router.put('/:id', protect, authorize('publisher', 'admin'), updateCourse);
-router.delete('/:id', protect, authorize('publisher', 'admin'), deleteCourse);
 
 module.exports = router;

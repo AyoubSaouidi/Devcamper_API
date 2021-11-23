@@ -115,7 +115,7 @@ exports.updateCourse = asyncHandler(async(req, res, next) => {
     }
 
     // Update Course
-    course = await Course.findOneAndUpdate(req.params.id, req.body, {
+    course = await Course.findByIdAndUpdate(req.params.id, req.body, {
         new: true,
         runValidators: true
     });
@@ -152,7 +152,7 @@ exports.deleteCourse = asyncHandler(async(req, res, next) => {
     }
 
     // Delete Course
-    course.remove();
+    await course.remove();
 
     // Response
     res.status(200).json({
