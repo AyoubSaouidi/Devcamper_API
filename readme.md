@@ -22,6 +22,31 @@ npm run dev
 npm start
 ```
 
+## Seeding Mock Data
+
+There's fake data of ressources in "\_data/":
+
+- users.json
+- bootcamps.json
+- courses.json
+- reviews.json
+
+You can test the API with 'seeder.js' by inserting and deleting once before running server.
+
+```
+# Insert data
+node seeder -i
+
+# Delete data
+node seeder -d
+```
+
+## Roles
+
+By default there's 3 roles 'user','publisher' and 'admin'. To be 'admin', you need to change the role manually via MongoDB-Atlas or Compass.
+
+#
+
 - Version: 1.0.0
 - License: MIT
 - Author: Ayoub Saouidi
