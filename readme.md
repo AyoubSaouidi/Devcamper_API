@@ -45,6 +45,10 @@ node seeder -d
 
 By default there's 3 roles 'user','publisher' and 'admin'. To be 'admin', you need to change the role manually via MongoDB-Atlas or Compass.
 
+## API Documentation
+
+Read more about the API features in this [Documentation](https://devcamper-learn.me).
+
 #
 
 - Version: 1.0.0
