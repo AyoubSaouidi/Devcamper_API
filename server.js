@@ -57,7 +57,7 @@ app.use(xss());
 // Set requests Rate Limit
 const limiter = rateLimit({
     windowMs: 10 * 60 * 1000, //10min
-    max: 20
+    max: 100
 });
 app.use(limiter);
 
@@ -65,7 +65,10 @@ app.use(limiter);
 app.use(hpp());
 
 // Set static folder
-app.use(express.static(path.join(__dirname, 'public')));
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    next();
+}, express.static(path.join(__dirname, 'public')));
 
 // Mount Routers (- EndPoints -)
 app.use('/api/v1/auth', auth);
